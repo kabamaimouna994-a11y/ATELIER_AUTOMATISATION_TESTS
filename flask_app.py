@@ -76,7 +76,7 @@ def salut():
 
 @app.get("/run")
 def trigger_run():
-    """Exécute un run de tests sur l'API Quotable et sauvegarde en SQLite"""
+    """Exécute un run de tests sur l'API Agify et sauvegarde en SQLite"""
     run_data = execute_run()
     save_run(run_data)
     return jsonify({"message": "Run executed successfully", "data": run_data})
