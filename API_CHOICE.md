@@ -1,15 +1,15 @@
 # API Choice
 
 - Étudiante : Maïmouna Kaba
-- API choisie : Quotable
-- URL base : https://api.quotable.io/random
-- Documentation officielle / README : https://github.com/lukePeavey/quotable
+- API choisie : Agify
+- URL base : https://api.agify.io
+- Documentation officielle / README : https://agify.io
 - Auth : None
 - Endpoints testés :
-  - GET /random
+  - GET /?name=maimouna
 - Hypothèses de contrat (champs attendus, types, codes) :
   - Code HTTP : 200 OK
   - Content-Type : application/json
-  - Champs obligatoires : `content` (string), `author` (string)
-- Limites / rate limiting connu : Utilisation libre et généreuse (pas de clé requise).
-- Risques : Très stable, aucun risque majeur.
+  - Champs obligatoires : `name` (string), `age` (int ou null), `count` (int)
+- Limites / rate limiting connu : Gratuit jusqu'à 1000 requêtes par jour.
+- Risques : Service très stable, aucun risque majeur.
