@@ -24,7 +24,7 @@ def execute_run():
     error_rate = 0.0 if last_res["status_code"] == 200 else 1.0
 
     run_data = {
-        "api": "Quotable",
+        "api": "Agify",
         "timestamp": datetime.now().isoformat(),
         "summary": {
             "passed": passed,
