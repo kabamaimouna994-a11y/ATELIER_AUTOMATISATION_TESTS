@@ -2,7 +2,7 @@ import requests
 import time
 
 def call_api():
-    url = "https://api.quotable.io/random"
+    url = "https://api.agify.io?name=maimouna"
     start_time = time.time()
     try:
         response = requests.get(url, timeout=3.0)
