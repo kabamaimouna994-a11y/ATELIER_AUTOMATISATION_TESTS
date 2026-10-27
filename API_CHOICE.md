@@ -1,13 +1,15 @@
 # API Choice
 
-- Étudiant :
-- API choisie :
-- URL base :
-- Documentation officielle / README :
-- Auth : None / API Key / OAuth
+- Étudiante : Maïmouna Kaba
+- API choisie : Quotable
+- URL base : https://api.quotable.io/random
+- Documentation officielle / README : https://github.com/lukePeavey/quotable
+- Auth : None
 - Endpoints testés :
-  - GET ...
-  - GET ...
+  - GET /random
 - Hypothèses de contrat (champs attendus, types, codes) :
-- Limites / rate limiting connu :
-- Risques (instabilité, downtime, CORS, etc.) :
+  - Code HTTP : 200 OK
+  - Content-Type : application/json
+  - Champs obligatoires : `content` (string), `author` (string)
+- Limites / rate limiting connu : Utilisation libre et généreuse (pas de clé requise).
+- Risques : Très stable, aucun risque majeur.
