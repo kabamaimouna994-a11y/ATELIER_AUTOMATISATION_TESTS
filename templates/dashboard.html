@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Dashboard QoS & API Monitoring</title>
+</head>
+<body style="font-family: Arial, sans-serif; background: #f4f6f9; padding: 20px;">
+    <div style="max-width: 900px; margin: auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <h1>📊 Dashboard QoS — API Monitoring</h1>
+        <p>Surveillance automatisée de l'API <b>Quotable</b>.</p>
+        
+        <p>
+            <a href="/run" style="padding: 10px 15px; background: #007bff; color: white; text-decoration: none; border-radius: 4px;">🚀 Lancer un Run manuellement</a>
+            <a href="/health" target="_blank" style="padding: 10px 15px; background: #28a745; color: white; text-decoration: none; border-radius: 4px; margin-left: 10px;">🩺 Endpoint /health (JSON)</a>
+        </p>
+
+        <h2>Dernier Run</h2>
+        {% if latest %}
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; border-left: 5px solid {% if latest.failed == 0 %}#28a745{% else %}#dc3545{% endif %};">
+                <p><b>Timestamp :</b> {{ latest.timestamp }}</p>
+                <p><b>Tests Réussis :</b> <span style="color: green; font-weight: bold;">{{ latest.passed }}</span> | <b>Échoués :</b> <span style="color: red; font-weight: bold;">{{ latest.failed }}</span></p>
+                <p><b>Latence Moyenne :</b> {{ latest.avg_latency }} ms | <b>Latence P95 :</b> {{ latest.p95_latency }} ms</p>
+                <p><b>Taux d'erreur :</b> {{ latest.error_rate * 100 }} %</p>
+            </div>
+        {% else %}
+            <p>Aucun run enregistré pour le moment. Cliquez sur « Lancer un Run manuellement ».</p>
+        {% endif %}
+
+        <h2>Historique des 10 derniers Runs</h2>
+        <table border="1" cellpadding="8" style="width: 100%; border-collapse: collapse; margin-top: 10px; text-align: center;">
+            <tr style="background: #e9ecef;">
+                <th>Timestamp</th>
+                <th>Passed</th>
+                <th>Failed</th>
+                <th>Latence Moy. (ms)</th>
+                <th>Taux d'erreur</th>
+            </tr>
+            {% for r in runs %}
+            <tr>
+                <td>{{ r.timestamp }}</td>
+                <td style="color: green; font-weight: bold;">{{ r.passed }}</td>
+                <td style="color: red; font-weight: bold;">{{ r.failed }}</td>
+                <td>{{ r.avg_latency }}</td>
+                <td>{{ r.error_rate * 100 }}%</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
